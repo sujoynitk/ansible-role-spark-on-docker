@@ -1,0 +1,25 @@
+---
+# tasks file for docker-spark-installer
+
+- name: Creating docker build directory
+  file:
+   path: /mydir
+   state: directory
+   owner: root
+   group: root
+   mode: '0755'
+
+- name: Copying local dockerfiles to ec2
+  copy:
+   src: /etc/ansible/roles/ansible-role-docker-spark-installer/files/
+   dest: /mydir/
+   owner: root
+   group: root
+   mode: 0755
+
+- name: Switching to Build directory
+  shell: cd /mydir
+
+- name: Build spark image using Dockerfile
+  command: docker build -t sparkimg /mydir
+
