@@ -11,7 +11,7 @@
 
 - name: Copying local dockerfiles to ec2
   copy:
-   src: /etc/ansible/roles/ansible-role-docker-spark-installer/files/
+   src: /etc/ansible/roles/ansible-role-spark-on-docker/files/
    dest: /mydir/
    owner: root
    group: root
